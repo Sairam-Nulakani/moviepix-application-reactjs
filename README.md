@@ -1,3 +1,15 @@
+# MoviePix Application
+
+- Created Application with Vite
+- Installed Required Packages through NPM
+- Fetching Movie Data From TMDB
+- Created Components & Pages for Developing Application
+- Use React-router-dom for converted to Multiple Pages Application
+- Setup Redux Store with Redux Toolkit
+- Created Reducers
+- Updated Hero Banner Component
+- Created Custom Hook for Fetching Movies
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
