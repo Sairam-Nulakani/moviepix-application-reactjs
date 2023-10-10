@@ -6,17 +6,18 @@ import { getApiConfiguration } from "./store/homeSlice";
 
 function App() {
   const dispatch = useDispatch();
+  const { url } = useSelector((state) => state.home);
   useEffect(() => {
     const apiTesting = () => {
       fetchDataFromApi("/movie/popular")
-        .then((res) => dispatch(getApiConfiguration(res.results)))
+        .then((res) => dispatch(getApiConfiguration(res)))
         .catch((err) => console.log(err));
     };
     apiTesting();
   }, []);
   return (
     <div className="App">
-      <h1>MOVIE PIX</h1>
+      <h1>{url.total_pages}</h1>
     </div>
   );
 }
