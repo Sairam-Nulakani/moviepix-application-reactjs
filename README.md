@@ -10,6 +10,7 @@
 - Updated Hero Banner Component
 - Created Custom Hook for Fetching Movies
 - Updated Hero banner Component
+- Updated Header Component
 
 # React + Vite
 

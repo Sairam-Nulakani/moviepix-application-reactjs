@@ -20,7 +20,7 @@ const HeroBanner = () => {
     setBackground(bg);
   }, [data]);
 
-  const searchinputHandler = (e) => {
+  const searchInputHandler = (e) => {
     if (e.key === "Enter" && query.length > 0) {
       navigate(`/search/${query}`);
     }
@@ -43,7 +43,7 @@ const HeroBanner = () => {
             <input
               type="text"
               placeholder="Search for Movie/Tv Show..."
-              onKeyUp={searchinputHandler}
+              onKeyUp={searchInputHandler}
               onChange={(e) => setQuery(e.target.value)}
             />
             <button>Search</button>
