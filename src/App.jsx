@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import "./App.css";
+import React, { useEffect } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { fetchDataFromApi } from "./utils/api";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,14 +14,25 @@ import Footer from "./components/footer/Footer";
 function App() {
   const dispatch = useDispatch();
   const { url } = useSelector((state) => state.home);
+
   useEffect(() => {
-    const apiTesting = () => {
-      fetchDataFromApi("/movie/popular")
-        .then((res) => dispatch(getApiConfiguration(res)))
-        .catch((err) => console.log(err));
+    const fetchApiConfig = async () => {
+      try {
+        const res = await fetchDataFromApi("/configuration");
+        const url = {
+          backdrop: res.images.secure_base_url + "original",
+          poster: res.images.secure_base_url + "original",
+          profile: res.images.secure_base_url + "original",
+        };
+        dispatch(getApiConfiguration(url));
+      } catch (error) {
+        console.error("Error fetching API configuration:", error);
+      }
     };
-    apiTesting();
-  }, []);
+
+    fetchApiConfig();
+  }, [dispatch]);
+
   return (
     <BrowserRouter>
       {/* <Header /> */}
