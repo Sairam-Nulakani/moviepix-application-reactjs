@@ -1,10 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import ContentWrapper from "../../../components/contentWrapper/ContentWrapper";
 import "../style.scss";
 import SwitchTabs from "../../../components/switchTabs/SwitchTabs";
+import useFetch from "../../../hooks/useFetch";
 
 const Trending = () => {
-  const onTabChange = (tab) => {};
+  const [endPoint, setEndPoint] = useState("day");
+
+  const { data, loading } = useFetch(`/trending/all/${endPoint}`);
+
+  const onTabChange = (tab) => {
+    setEndPoint(tab === "Day" ? "day" : "week");
+  };
   return (
     <div className="carouselSection">
       <ContentWrapper>
